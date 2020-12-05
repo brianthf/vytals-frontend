@@ -1,16 +1,26 @@
 import React from "react";
 import { Formik, Form, Field, FormikHelpers } from "formik";
-import { LoginConfig } from "../../types";
+import { RegisterConfig } from "../../../types";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { RegisterSchema } from "../validation";
 
-export default function LoginForm() {
+export default function RegisterForm() {
   return (
     <Formik
       initialValues={{
+        firstName: "",
+        lastName: "",
         username: "",
         password: "",
+        email: "",
+        birthdate: "",
       }}
-      onSubmit={(values: LoginConfig, actions: FormikHelpers<LoginConfig>) => {
+      validateOnChange={true}
+      validationSchema={RegisterSchema}
+      onSubmit={(
+        values: RegisterConfig,
+        actions: FormikHelpers<RegisterConfig>
+      ) => {
         alert(JSON.stringify(values, null, 2));
         actions.setSubmitting(false);
       }}
@@ -21,9 +31,35 @@ export default function LoginForm() {
             <Row className="mt-2">
               <Col>
                 <Field
+                  name="firstName"
+                  placeholder="first name"
+                  type="text"
+                  id="firstName"
+                />
+                {touched.firstName && errors.firstName ? (
+                  <div className="error">{errors.firstName}</div>
+                ) : null}
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              <Col>
+                <Field
+                  name="lastName"
+                  placeholder="last name"
+                  type="text"
+                  id="lastName"
+                />
+                {touched.lastName && errors.lastName ? (
+                  <div className="error">{errors.lastName}</div>
+                ) : null}
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              <Col>
+                <Field
                   name="username"
                   placeholder="username"
-                  type="text"
+                  type="username"
                   id="username"
                 />
                 {touched.username && errors.username ? (
