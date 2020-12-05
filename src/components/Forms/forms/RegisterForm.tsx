@@ -82,6 +82,33 @@ export default function RegisterForm() {
             </Row>
             <Row className="mt-2">
               <Col>
+                <Field
+                  name="email"
+                  placeholder="email"
+                  type="text"
+                  id="email"
+                />
+                {touched.email && errors.email ? (
+                  <div className="error">{errors.email}</div>
+                ) : null}
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              <Col>
+                <Field
+                  name="birthdate"
+                  type="date"
+                  value="2010-01-01"
+                  id="birthdate"
+                  min="2019-01-01T00:00"
+                />
+                {touched.birthdate && errors.birthdate ? (
+                  <div className="error">{errors.birthdate}</div>
+                ) : null}
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              <Col>
                 <Button type="submit" variant="dark">
                   Login
                 </Button>

@@ -27,7 +27,15 @@ export const RegisterSchema = yup.object({
 });
 
 export const ReadingSchema = yup.object({
-    
+  weight: yup.number().min(1).notRequired(),
+  bloodPressure: yup.number().min(1).required("Blood pressure is required."),
+  temperature: yup.number().min(1).required("Temperature is required."),
+  oxygenLevel: yup.number().min(1).required("Oxygen level is required."),
+  pulse: yup.number().min(1).required("Pulse is required."),
+  timestamp: yup
+    .date()
+    .min(new Date(2019, 1, 1))
+    .required("Timestamp is required."),
 });
 
 export const ActivitySchema = yup.object({
