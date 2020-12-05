@@ -4,7 +4,7 @@ export interface RegisterConfig {
   username: string;
   password: string;
   email: string;
-  birthdate: Date;
+  birthdate: string;
 };
 
 export interface LoginConfig {
@@ -22,8 +22,8 @@ export interface User {
 export interface Activity {
   type: string;
   description: string;
-  startTime: Date;
-  endTime: Date;
+  startTime: string;
+  endTime: string;
   duration?: string;
   user_id?: number;
 };
@@ -34,6 +34,6 @@ export interface Reading {
   temperature: number;
   oxygenLevel: number;
   pulse: number;
-  timestamp: Date;
+  timestamp: string;
   user_id?: number;
 };
