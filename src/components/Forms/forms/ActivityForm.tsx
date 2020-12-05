@@ -77,7 +77,7 @@ export default function ActivityForm() {
             <Row className="mt-2">
               <Col>
                 <Button type="submit" variant="dark">
-                  Login
+                  Submit
                 </Button>
               </Col>
             </Row>

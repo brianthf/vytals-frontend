@@ -25,15 +25,15 @@ export interface ActivityConfig {
   startTime: string;
   endTime: string;
   duration?: string;
-  user_id?: number;
+  userId?: number;
 }
 
 export interface ReadingConfig {
   weight?: number;
-  blood_pressure: number;
+  bloodPressure: number;
   temperature: number;
   oxygenLevel: number;
   pulse: number;
   timestamp: string;
-  user_id?: number;
+  userId?: number;
 }
