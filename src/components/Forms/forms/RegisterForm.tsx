@@ -110,7 +110,7 @@ export default function RegisterForm() {
             <Row className="mt-2">
               <Col>
                 <Button type="submit" variant="dark">
-                  Login
+                  Register
                 </Button>
               </Col>
             </Row>
