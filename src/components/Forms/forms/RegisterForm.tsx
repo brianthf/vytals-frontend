@@ -85,7 +85,7 @@ export default function RegisterForm() {
                 <Field
                   name="email"
                   placeholder="email"
-                  type="text"
+                  type="email"
                   id="email"
                 />
                 {touched.email && errors.email ? (

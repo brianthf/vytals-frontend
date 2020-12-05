@@ -12,14 +12,14 @@ export interface LoginConfig {
   password: string;
 }
 
-export interface User {
+export interface UserConfig {
   isAuthenticated: boolean;
   id?: number;
   username?: string;
   roles?: Array<string>;
 }
 
-export interface Activity {
+export interface ActivityConfig {
   type: string;
   description: string;
   startTime: string;
@@ -28,7 +28,7 @@ export interface Activity {
   user_id?: number;
 }
 
-export interface Reading {
+export interface ReadingConfig {
   weight?: number;
   blood_pressure: number;
   temperature: number;
