@@ -1,7 +1,7 @@
 import React from "react";
-import { Formik, Form, Field, FormikHelpers } from "formik";
+import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { RegisterSchema } from "../validation";
+import { RegisterSchema } from "./validation";
 
 export default function RegisterForm() {
   return (

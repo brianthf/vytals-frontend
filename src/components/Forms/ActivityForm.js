@@ -5,7 +5,7 @@ import { RegisterSchema } from "./validation";
 
 export default function ActivityForm() {
   return (
-    <Formik
+    <Formik 
       initialValues={{
         type: "",
         description: "",
