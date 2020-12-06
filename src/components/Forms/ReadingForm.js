@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { ReadingSchema } from "../validation";
+import { ReadingSchema } from "./validation";
 
 export default function ActivityForm() {
   return (

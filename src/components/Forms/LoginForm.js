@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { LoginSchema } from "../validation";
+import { LoginSchema } from "./validation";
 
 export default function LoginForm() {
   return (
