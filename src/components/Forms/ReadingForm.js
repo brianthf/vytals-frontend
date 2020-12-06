@@ -1,6 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, FormikHelpers } from "formik";
-import { ReadingConfig } from "../../../types";
+import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { ReadingSchema } from "../validation";
 
@@ -17,10 +16,7 @@ export default function ActivityForm() {
       }}
       validateOnChange={true}
       validationSchema={ReadingSchema}
-      onSubmit={(
-        values: ReadingConfig,
-        actions: FormikHelpers<ReadingConfig>
-      ) => {
+      onSubmit={(values, actions) => {
         alert(JSON.stringify(values, null, 2));
         actions.setSubmitting(false);
       }}

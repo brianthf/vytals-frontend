@@ -1,8 +1,7 @@
 import React from "react";
-import { Formik, Form, Field, FormikHelpers } from "formik";
-import { ActivityConfig } from "../../../types";
+import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { RegisterSchema } from "../validation";
+import { RegisterSchema } from "./validation";
 
 export default function ActivityForm() {
   return (
@@ -15,10 +14,7 @@ export default function ActivityForm() {
       }}
       validateOnChange={true}
       validationSchema={RegisterSchema}
-      onSubmit={(
-        values: ActivityConfig,
-        actions: FormikHelpers<ActivityConfig>
-      ) => {
+      onSubmit={(values, actions) => {
         alert(JSON.stringify(values, null, 2));
         actions.setSubmitting(false);
       }}

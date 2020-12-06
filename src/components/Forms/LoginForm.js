@@ -1,6 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, FormikHelpers } from "formik";
-import { LoginConfig } from "../../../types";
+import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { LoginSchema } from "../validation";
 
@@ -13,7 +12,7 @@ export default function LoginForm() {
       }}
       validateOnChange={true}
       validationSchema={LoginSchema}
-      onSubmit={(values: LoginConfig, actions: FormikHelpers<LoginConfig>) => {
+      onSubmit={(values, actions) => {
         alert(JSON.stringify(values, null, 2));
         actions.setSubmitting(false);
       }}
