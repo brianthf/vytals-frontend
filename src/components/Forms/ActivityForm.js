@@ -49,7 +49,6 @@ export default function ActivityForm() {
                   id="start time"
                   name="startTime"
                   type="datetime-local"
-                  value="2020-01-01T00:00"
                   min="2019-01-01T00:00"
                 />
                 {touched.startTime && errors.startTime ? (

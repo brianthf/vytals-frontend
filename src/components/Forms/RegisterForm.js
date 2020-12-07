@@ -94,7 +94,6 @@ export default function RegisterForm() {
                 <Field
                   name="birthdate"
                   type="date"
-                  value="2010-01-01"
                   id="birthdate"
                   min="2019-01-01T00:00"
                 />
