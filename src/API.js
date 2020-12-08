@@ -39,9 +39,9 @@ function remove(suffix, token) {
 
 export default {
     login: function(user) {
-        return axios.post('/login', user);
+        return axios.post('/users/login', user);
     },
     register: function(user) {
-        return axios.post('/register', user);
+        return axios.post('/users/new', user);
     }
 };

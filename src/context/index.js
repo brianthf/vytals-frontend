@@ -65,8 +65,9 @@ export function useAuthProvider() {
   }
 
   async function register(user) {
+    console.log("registering")
     try {
-      let response = await API.login(user);
+      let response = await API.register(user);
       if (response.status === 201) {
         let token = response.access_token;
         let user = decodeToken(token);
@@ -83,6 +84,7 @@ export function useAuthProvider() {
 
   function logout() {
     clearToken();
+    console.log("logging out")
     dispatch({ type: Actions.LOGOUT });
   }
 

@@ -16,19 +16,17 @@ export default function Header() {
       >
         <Nav fill>
           {state.isAuthenticated ? (
-            <>
-              <Nav.Item className="px-3">
-                <Button
-                  variant="link"
-                  onClick={() => {
-                    logout();
-                    history.push("/");
-                  }}
-                >
-                  Logout
-                </Button>
-              </Nav.Item>
-            </>
+            <Nav.Item className="px-3">
+              <Button
+                variant="link"
+                onClick={() => {
+                  logout();
+                  history.push("/");
+                }}
+              >
+                Logout
+              </Button>
+            </Nav.Item>
           ) : (
             <>
               <Nav.Item className="px-3">
