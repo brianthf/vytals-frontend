@@ -106,8 +106,8 @@ export default function RegisterForm({ register, history }) {
                   id="birthDate"
                   min="2019-01-01T00:00"
                 />
-                {touched.birthdate && errors.birthdate ? (
-                  <div className="error">{errors.birthdate}</div>
+                {touched.birthDate && errors.birthDate ? (
+                  <div className="error">{errors.birthDate}</div>
                 ) : null}
               </Col>
             </Row>
