@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { ReadingSchema } from "./validation";
 
-export default function ActivityForm() {
+export default function ReadingForm() {
   return (
     <Formik
       initialValues={{

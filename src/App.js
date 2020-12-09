@@ -1,22 +1,28 @@
 import "./App.css";
 import Header from "./components/Header";
-import { LoginForm, RegistrationForm } from "./components/Forms";
+import Home from "./containers/Home";
+import Dashboard from "./containers/Dashboard";
+import NotFound from "./containers/Error";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { AuthProvider } from "./context";
 
 function App() {
   return (
     <>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/login">
-            <LoginForm />
-          </Route>
-          <Route path="/register">
-            <RegistrationForm />
-          </Route>
-        </Switch>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </AuthProvider>
     </>
   );
 }

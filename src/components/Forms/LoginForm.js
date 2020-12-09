@@ -3,7 +3,8 @@ import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { LoginSchema } from "./validation";
 
-export default function LoginForm() {
+export default function LoginForm({ login, history }) {
+  console.log("LOGGININGGGGG")
   return (
     <Formik
       initialValues={{
@@ -13,8 +14,15 @@ export default function LoginForm() {
       validateOnChange={true}
       validationSchema={LoginSchema}
       onSubmit={(values, actions) => {
-        alert(JSON.stringify(values, null, 2));
-        actions.setSubmitting(false);
+        Promise.all([
+          login(values),
+          actions.setSubmitting(false),
+          actions.resetForm(),
+        ]).then(() => {
+          history.push("/dashboard");
+        }).catch((err) => {
+          alert(err)
+        });
       }}
     >
       {({ errors, touched }) => (
