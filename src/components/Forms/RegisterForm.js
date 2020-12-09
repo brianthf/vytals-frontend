@@ -4,7 +4,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { RegisterSchema } from "./validation";
 
 export default function RegisterForm({ register, history }) {
-  console.log("REGISTRATION>>>");
+  console.log("REERE");
   return (
     <Formik
       initialValues={{
@@ -13,20 +13,21 @@ export default function RegisterForm({ register, history }) {
         username: "",
         password: "",
         email: "",
-        birthdate: "",
-      }}                                                                    
+        birthDate: "",
+      }}
       validateOnChange={true}
       validationSchema={RegisterSchema}
       onSubmit={(values, actions) => {
-        Promise.all([
-          register(values),
-          actions.setSubmitting(false),
-          actions.resetForm(),
-        ]).then(() => {
-          history.push("/dashboard");
-        }).catch(err => {
-          alert(err);
-        });
+        console.log("ITWORKS");
+        register(values)
+          .then(() => {
+            actions.setSubmitting(false);
+            actions.resetForm();
+            history.push("/dashboard");
+          })
+          .catch((err) => {
+            alert(err);
+          });
       }}
     >
       {({ errors, touched }) => (
@@ -100,13 +101,13 @@ export default function RegisterForm({ register, history }) {
             <Row className="mt-2">
               <Col>
                 <Field
-                  name="birthdate"
+                  name="birthDate"
                   type="date"
-                  id="birthdate"
+                  id="birthDate"
                   min="2019-01-01T00:00"
                 />
-                {touched.birthdate && errors.birthdate ? (
-                  <div className="error">{errors.birthdate}</div>
+                {touched.birthDate && errors.birthDate ? (
+                  <div className="error">{errors.birthDate}</div>
                 ) : null}
               </Col>
             </Row>
