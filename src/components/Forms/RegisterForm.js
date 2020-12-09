@@ -2,10 +2,9 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { RegisterSchema } from "./validation";
-import { useAuth } from "../../context";
 
-export default function RegisterForm({ history }) {
-  const { register } = useAuth();
+export default function RegisterForm({ register, history }) {
+  console.log("REGISTRATION>>>");
   return (
     <Formik
       initialValues={{
@@ -15,7 +14,7 @@ export default function RegisterForm({ history }) {
         password: "",
         email: "",
         birthdate: "",
-      }}
+      }}                                                                    
       validateOnChange={true}
       validationSchema={RegisterSchema}
       onSubmit={(values, actions) => {
@@ -25,6 +24,8 @@ export default function RegisterForm({ history }) {
           actions.resetForm(),
         ]).then(() => {
           history.push("/dashboard");
+        }).catch(err => {
+          alert(err);
         });
       }}
     >

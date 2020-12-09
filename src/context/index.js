@@ -65,7 +65,6 @@ export function useAuthProvider() {
   }
 
   async function register(user) {
-    console.log("registering")
     try {
       let response = await API.register(user);
       if (response.status === 201) {

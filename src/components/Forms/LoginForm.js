@@ -2,11 +2,9 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { LoginSchema } from "./validation";
-import { useAuth } from "../../context";
 
-export default function LoginForm({ history }) {
-  const { login } = useAuth();
-
+export default function LoginForm({ login, history }) {
+  console.log("LOGGININGGGGG")
   return (
     <Formik
       initialValues={{
@@ -22,6 +20,8 @@ export default function LoginForm({ history }) {
           actions.resetForm(),
         ]).then(() => {
           history.push("/dashboard");
+        }).catch((err) => {
+          alert(err)
         });
       }}
     >

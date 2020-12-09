@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "./components/Header";
-import { LoginForm, RegistrationForm } from "./components/Forms";
 import Home from "./containers/Home";
+import Dashboard from "./containers/Dashboard";
+import NotFound from "./containers/Error";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthProvider } from "./context";
 
@@ -15,12 +16,10 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/login">
-              <LoginForm />
+            <Route path="/dashboard">
+              <Dashboard />
             </Route>
-            <Route path="/register">
-              <RegistrationForm />
-            </Route>
+            <Route component={NotFound} />
           </Switch>
         </Router>
       </AuthProvider>
