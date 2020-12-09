@@ -47,43 +47,28 @@ export function useAuthProvider() {
   const [state, dispatch] = React.useReducer(Reducer, initialState);
 
   async function login(user) {
-    try {
-      let response = await API.login(user);
-      if (response.status === 200) {
-        let token = response.access_token;
-        localStorage.setItem("token", token);
-        let user = decodeToken(token);
-        dispatch({ type: Actions.LOGIN_SUCCESS, payload: user });
-      }
-    } catch (err) {
-      dispatch({
-        type: Actions.ERROR,
-        payload: { error: err.name, message: err.message },
-      });
-      alert(String(err));
+    let response = await API.login(user);
+    if (response.status === 200) {
+      let token = response.access_token;
+      localStorage.setItem("token", token);
+      let user = decodeToken(token);
+      dispatch({ type: Actions.LOGIN_SUCCESS, payload: user });
     }
   }
 
   async function register(user) {
-    try {
-      let response = await API.register(user);
-      if (response.status === 201) {
-        let token = response.access_token;
-        let user = decodeToken(token);
-        dispatch({ type: Actions.REGISTER_SUCCESS, payload: user });
-      }
-    } catch (err) {
-      dispatch({
-        type: Actions.ERROR,
-        payload: { error: err.name, message: err.message },
-      });
-      alert(String(err));
+    let response = await API.register(user);
+    if (response.status === 201) {
+      let token = response.access_token;
+      localStorage.setItem("token", token);
+      let user = decodeToken(token);
+      dispatch({ type: Actions.REGISTER_SUCCESS, payload: user });
     }
   }
 
   function logout() {
     clearToken();
-    console.log("logging out")
+    console.log("logging out");
     dispatch({ type: Actions.LOGOUT });
   }
 

@@ -23,7 +23,7 @@ export const RegisterSchema = yup.object({
   birthDate: yup
     .date()
     .required("Birthdate is required.")
-    .min(new Date(1900, 1, 1)),
+    .max(new Date(2002, 1, 1), "Date must be before 2002."),
 });
 
 export const ReadingSchema = yup.object({

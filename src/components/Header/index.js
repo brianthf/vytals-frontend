@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { useAuth } from "../../context";
 
@@ -7,7 +7,7 @@ export default function Header() {
   const { state, logout } = useAuth();
   const history = useHistory();
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="transparent" expand="lg">
       <Navbar.Brand>Vytals</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse
@@ -27,16 +27,7 @@ export default function Header() {
                 Logout
               </Button>
             </Nav.Item>
-          ) : (
-            <>
-              <Nav.Item className="px-3">
-                <Link to="/login">Login</Link>
-              </Nav.Item>
-              <Nav.Item className="px-3">
-                <Link to="/register">Register</Link>
-              </Nav.Item>
-            </>
-          )}
+          ) : null}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

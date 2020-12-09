@@ -4,7 +4,6 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { LoginSchema } from "./validation";
 
 export default function LoginForm({ login, history }) {
-  console.log("LOGGININGGGGG")
   return (
     <Formik
       initialValues={{
@@ -14,15 +13,15 @@ export default function LoginForm({ login, history }) {
       validateOnChange={true}
       validationSchema={LoginSchema}
       onSubmit={(values, actions) => {
-        Promise.all([
-          login(values),
-          actions.setSubmitting(false),
-          actions.resetForm(),
-        ]).then(() => {
-          history.push("/dashboard");
-        }).catch((err) => {
-          alert(err)
-        });
+        login(values)
+          .then(() => {
+            actions.setSubmitting(false);
+            actions.resetForm();
+            history.push("/dashboard");
+          })
+          .catch((err) => {
+            alert(err);
+          });
       }}
     >
       {({ errors, touched }) => (
