@@ -1,7 +1,8 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { useAuth } from "../../context";
+import "./style.css";
 
 export default function Header() {
   const { state, logout } = useAuth();
@@ -27,7 +28,13 @@ export default function Header() {
                 Logout
               </Button>
             </Nav.Item>
-          ) : null}
+          ) : (
+            <>
+              <Button variant="link">
+                Login
+              </Button>
+            </>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -8,9 +8,9 @@ import { AuthProvider } from "./context";
 
 function App() {
   return (
-    <>
-      <AuthProvider>
-        <Router>
+    <AuthProvider>
+      <Router>
+        <div className="content">
           <Header />
           <Switch>
             <Route exact path="/">
@@ -21,9 +21,9 @@ function App() {
             </Route>
             <Route component={NotFound} />
           </Switch>
-        </Router>
-      </AuthProvider>
-    </>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 
