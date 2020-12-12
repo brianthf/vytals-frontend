@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../context";
-import { LoginForm, RegistrationForm } from "../../components/Forms";
+import { LoginForm, RegistrationForm } from "../../components/Forms/Input";
 import "./style.css";
 
 export default function Home() {
