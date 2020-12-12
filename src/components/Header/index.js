@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { useAuth } from "../../context";
 import "./style.css";
@@ -9,7 +9,7 @@ export default function Header() {
   const history = useHistory();
   return (
     <Navbar bg="transparent" expand="lg">
-      <Navbar.Brand>Vytals</Navbar.Brand>
+      <Navbar.Brand href="/">Vytals</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse
         className="justify-content-end"
@@ -30,9 +30,7 @@ export default function Header() {
             </Nav.Item>
           ) : (
             <>
-              <Button variant="link">
-                Login
-              </Button>
+              <Button variant="link">Login</Button>
             </>
           )}
         </Nav>
