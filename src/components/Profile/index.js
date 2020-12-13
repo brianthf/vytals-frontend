@@ -1,10 +1,7 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
-import { useAuth } from "../../context";
 
-export const Profile = React.memo(() => {
-  const { state } = useAuth();
-
+export const Profile = React.memo(({ state }) => {
   return (
     <Col className="mb-3">
       <Card>
