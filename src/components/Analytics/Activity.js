@@ -2,8 +2,8 @@ import React from "react";
 import Plot from "react-plotly.js";
 import useSWR from "swr";
 
-export default function Plots({ state }) {
-  const { data, error } = useSWR(`/activities/user/${state.userId}/all`, {
+export default function ActivityPlot({ state }) {
+  const { data } = useSWR(`/activities/user/${state.userId}/all`, {
     suspense: true,
   });
 
