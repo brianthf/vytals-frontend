@@ -4,7 +4,7 @@ import Analytics from "../../components/Analytics";
 import FormTab from "../../components/Forms";
 import { Profile } from "../../components/Profile";
 import { useAuth } from "../../context";
-import useSwr from "swr";
+
 
 export default function Dashboard() {
   const { state } = useAuth();
