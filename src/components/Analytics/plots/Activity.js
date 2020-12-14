@@ -1,11 +1,11 @@
 import React from "react";
 import Plot from "react-plotly.js";
-import useSWR from "swr";
+// import useSWR from "swr";
 
 export default function ActivityPlot({ state }) {
-  const { data } = useSWR(`/activities/user/${state.userId}/all`, {
-    suspense: true,
-  });
+  // const { data } = useSWR(`/activities/user/${state.userId}/all`, {
+  //   suspense: true,
+  // });
 
   return (
     <Plot
@@ -13,7 +13,7 @@ export default function ActivityPlot({ state }) {
         {
           x: [1, 2, 3],
           y: [2, 6, 3],
-          type: "scatter",
+          type: "line",
           mode: "lines+markers",
           marker: { color: "red" },
         },
