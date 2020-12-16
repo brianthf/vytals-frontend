@@ -1,13 +1,9 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Plot from "react-plotly.js";
-import { readings } from "./mock";
 //import useSWR from "swr";
 
-export default function ReadingPlot({ state }) {
-  // const { data } = useSWR(`/readings/user/${state.userId}/all`, {
-  //   suspense: true,
-  // });
+const ReadingPlot = React.memo(({ data }) => {
   let userVitals = {
     weight: [],
     date: [],
@@ -15,12 +11,12 @@ export default function ReadingPlot({ state }) {
     oxygenLevel: [],
     pulse: [],
   };
-  for (var i = 0; i < readings.length; i++) {
-    userVitals.date.push(readings[i].timestamp);
-    userVitals.weight.push(readings[i].weight);
-    userVitals.temperature.push(readings[i].temperature);
-    userVitals.oxygenLevel.push(readings[i].oxygenLevel);
-    userVitals.pulse.push(readings[i].pulse);
+  for (var i = 0; i < data.length; i++) {
+    userVitals.date.push(data[i].timestamp);
+    userVitals.weight.push(data[i].weight);
+    userVitals.temperature.push(data[i].temperature);
+    userVitals.oxygenLevel.push(data[i].oxygenLevel);
+    userVitals.pulse.push(data[i].pulse);
   }
 
   return (
@@ -87,4 +83,6 @@ export default function ReadingPlot({ state }) {
       </Row>
     </>
   );
-}
+});
+
+export default ReadingPlot;
