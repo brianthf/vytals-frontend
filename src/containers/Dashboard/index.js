@@ -22,7 +22,7 @@ export default function Dashboard() {
             <Card.Header>Analytics</Card.Header>
             <Card.Body>
               <ErrorBoundary fallback={<h1>Could not fetch Analytics.</h1>}>
-                <Suspense fallback={<Spinner />}>
+                <Suspense fallback={<Spinner>hi</Spinner>}>
                   <Analytics state={state} />
                 </Suspense>
               </ErrorBoundary>

@@ -19,65 +19,49 @@ const ReadingPlot = React.memo(({ data }) => {
     userVitals.pulse.push(data[i].pulse);
   }
 
+  let trace1 = {
+    x: userVitals.date,
+    y: userVitals.weight,
+    name: "weight",
+    type: "bar",
+  };
+
+  let trace2 = {
+    x: userVitals.date,
+    y: userVitals.temperature,
+    name: "temperature",
+    xaxis: "x2",
+    yaxis: "y2",
+    type: "bar",
+  };
+
+  let trace3 = {
+    x: userVitals.date,
+    y: userVitals.oxygen,
+    name: "oxygen level",
+    xaxis: "x3",
+    yaxis: "y3",
+    type: "bar",
+  };
+
+  let trace4 = {
+    x: userVitals.date,
+    y: userVitals.pulse,
+    name: "pulse",
+    xaxis: "x4",
+    yaxis: "y4",
+    type: "bar",
+  };
+
+  let traces = [trace1, trace2, trace3, trace4];
+
   return (
     <>
       <Row>
         <Col>
           <Plot
-            data={[
-              {
-                x: userVitals.date,
-                y: userVitals.weight,
-                type: "bar",
-                mode: "lines+markers",
-                marker: { color: "red" },
-              },
-            ]}
-            layout={{ width: 300, height: 240, title: "Weight" }}
-          />
-        </Col>
-        <Col>
-          <Plot
-            data={[
-              {
-                x: userVitals.date,
-                y: userVitals.temperature,
-                type: "bar",
-                mode: "lines+markers",
-                marker: { color: "red" },
-              },
-            ]}
-            layout={{ width: 300, height: 240, title: "Temperature" }}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Plot
-            data={[
-              {
-                x: userVitals.date,
-                y: userVitals.oxygen,
-                type: "bar",
-                mode: "lines+markers",
-                marker: { color: "red" },
-              },
-            ]}
-            layout={{ width: 300, height: 240, title: "Oxygen Level" }}
-          />
-        </Col>
-        <Col>
-          <Plot
-            data={[
-              {
-                x: userVitals.date,
-                y: userVitals.pulse,
-                type: "bar",
-                mode: "lines+markers",
-                marker: { color: "red" },
-              },
-            ]}
-            layout={{ width: 300, height: 240, title: "Pulse" }}
+            data={traces}
+            layout={{ grid: { rows: 2, columns: 2, pattern: "independent" } }}
           />
         </Col>
       </Row>
