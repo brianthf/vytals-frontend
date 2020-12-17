@@ -1,19 +1,15 @@
 import React from "react";
 import Plot from "react-plotly.js";
-import useSWR from "swr";
+// import useSWR from "swr";
 
-export default function ActivityPlot({ state }) {
-  const { data } = useSWR(`/activities/user/${state.userId}/all`, {
-    suspense: true,
-  });
-
+const ActivityPlot = React.memo(({ data }) => {
   return (
     <Plot
       data={[
         {
           x: [1, 2, 3],
           y: [2, 6, 3],
-          type: "scatter",
+          type: "line",
           mode: "lines+markers",
           marker: { color: "red" },
         },
@@ -22,4 +18,6 @@ export default function ActivityPlot({ state }) {
       layout={{ width: 300, height: 240, title: "A Fancy Plot" }}
     />
   );
-}
+});
+
+export default ActivityPlot;

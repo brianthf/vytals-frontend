@@ -1,10 +1,11 @@
-import React from "react";
-import { Container, Col, Row } from "react-bootstrap";
-import Analytics from "../../components/Analytics";
+import React, { Suspense } from "react";
+import { Card, Container, Col, Row, Spinner } from "react-bootstrap";
+import ErrorBoundary from "../../components/ErrorBoundary";
 import FormTab from "../../components/Forms";
 import { Profile } from "../../components/Profile";
 import { useAuth } from "../../context";
-import useSwr from "swr";
+
+const Analytics = React.lazy(() => import("../../components/Analytics"));
 
 export default function Dashboard() {
   const { state } = useAuth();
@@ -17,7 +18,16 @@ export default function Dashboard() {
           <FormTab />
         </Col>
         <Col lg={8}>
-          <Analytics state={state} />
+          <Card className="text-center">
+            <Card.Header>Analytics</Card.Header>
+            <Card.Body>
+              <ErrorBoundary fallback={<h1>Could not fetch Analytics.</h1>}>
+                <Suspense fallback={<Spinner>hi</Spinner>}>
+                  <Analytics state={state} />
+                </Suspense>
+              </ErrorBoundary>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>
