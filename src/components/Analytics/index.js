@@ -1,9 +1,10 @@
 import React, { Suspense } from "react";
-import { Tab, Tabs } from "react-bootstrap";
+import { Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import ErrorBoundary from "../../components/ErrorBoundary";
 //import useSWR from "swr";
 import { readings, activities } from "./plots/mock";
 import "./style.css";
+import { ActivityTable, ReadingTable } from "./tables";
 
 const ActivityPlot = React.lazy(() => import("./plots/Activity"));
 const ReadingPlot = React.lazy(() => import("./plots/Reading"));
@@ -34,6 +35,24 @@ export default function Analytics({ state }) {
             <ActivityPlot data={activities} />
           </Suspense>
         </ErrorBoundary>
+      </Tab>
+      <Tab eventKey="activityTable" title="Activities">
+        <Container>
+          <Row className="mt-4">
+            <Col>
+              <ActivityTable data={activities} />
+            </Col>
+          </Row>
+        </Container>
+      </Tab>
+      <Tab eventKey="readingTable" title="Readings Table">
+        <Container>
+          <Row className="mt-4">
+            <Col>
+              <ReadingTable data={readings} />
+            </Col>
+          </Row>
+        </Container>
       </Tab>
     </Tabs>
   );
