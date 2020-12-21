@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Col, Container, Row, Tab, Tabs } from "react-bootstrap";
+import { Col, Row, Tab, Tabs } from "react-bootstrap";
 import ErrorBoundary from "../../components/ErrorBoundary";
 //import useSWR from "swr";
 import { readings, activities } from "./plots/mock";
@@ -21,38 +21,46 @@ export default function Analytics({ state }) {
   // });
 
   return (
-    <Tabs id="controlled-tab" activeKey={key} onSelect={(k) => setKey(k)}>
+    <Tabs id="controlled-tab" activeKey={key} onSelect={(k) => setKey(k)} fill>
       <Tab eventKey="readings" title="Readings">
-        <ErrorBoundary fallback={<h1>Could not fetch data.</h1>}>
-          <Suspense fallback={<h1>LOADING</h1>}>
-            <ReadingPlot data={readings} />
-          </Suspense>
-        </ErrorBoundary>
-      </Tab>
-      <Tab eventKey="activities" title="Activities">
-        <ErrorBoundary fallback={<h1>Could not fetch data.</h1>}>
-          <Suspense fallback={<h1>LOADING</h1>}>
-            <ActivityPlot data={activities} />
-          </Suspense>
-        </ErrorBoundary>
-      </Tab>
-      <Tab eventKey="activityTable" title="Activities">
-        <Container>
+        <div className="reading-plot">
           <Row className="mt-4">
-            <Col>
-              <ActivityTable data={activities} />
+            <Col className="mt-2">
+              <ErrorBoundary fallback={<h1>Could not fetch data.</h1>}>
+                <Suspense fallback={<h1>LOADING</h1>}>
+                  <ReadingPlot data={readings} />
+                </Suspense>
+              </ErrorBoundary>
             </Col>
           </Row>
-        </Container>
-      </Tab>
-      <Tab eventKey="readingTable" title="Readings Table">
-        <Container>
+        </div>
+        <div className="reading-table">
           <Row className="mt-4">
-            <Col>
+            <Col className="mt-2">
               <ReadingTable data={readings} />
             </Col>
           </Row>
-        </Container>
+        </div>
+      </Tab>
+      <Tab eventKey="activities" title="Activities">
+        <div className="activity-plot">
+          <Row className="mt-4">
+            <Col className="mt-2">
+              <ErrorBoundary fallback={<h1>Could not fetch data.</h1>}>
+                <Suspense fallback={<h1>LOADING</h1>}>
+                  <ActivityPlot data={activities} />
+                </Suspense>
+              </ErrorBoundary>
+            </Col>
+          </Row>
+        </div>
+        <div className="activities-table">
+          <Row className="mt-4">
+            <Col className="mt-2">
+              <ActivityTable data={activities} />
+            </Col>
+          </Row>
+        </div>
       </Tab>
     </Tabs>
   );

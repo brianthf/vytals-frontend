@@ -1,0 +1,8 @@
+@media screen and (max-width: 600px) {
+    div.reading-plot {
+        display: none;
+    }
+    div.activity-plot {
+        display: none;
+    }
+}
