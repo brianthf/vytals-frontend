@@ -1,7 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Plot from "react-plotly.js";
-//import useSWR from "swr";
 
 const ReadingPlot = React.memo(({ data }) => {
   let userVitals = {
@@ -53,14 +52,12 @@ const ReadingPlot = React.memo(({ data }) => {
     type: "bar",
   };
 
-  let traces = [trace1, trace2, trace3, trace4];
-
   return (
     <>
       <Row>
         <Col>
           <Plot
-            data={traces}
+            data={[trace1, trace2, trace3, trace4]}
             layout={{ grid: { rows: 2, columns: 2, pattern: "independent" } }}
           />
         </Col>
