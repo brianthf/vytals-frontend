@@ -23,6 +23,13 @@ export default function Analytics({ state }) {
   return (
     <Tabs id="controlled-tab" activeKey={key} onSelect={(k) => setKey(k)} fill>
       <Tab eventKey="readings" title="Readings">
+        <div className="reading-table">
+          <Row className="mt-4">
+            <Col className="mt-2">
+              <ReadingTable data={readings} />
+            </Col>
+          </Row>
+        </div>
         <div className="reading-plot">
           <Row className="mt-4">
             <Col className="mt-2">
@@ -34,15 +41,15 @@ export default function Analytics({ state }) {
             </Col>
           </Row>
         </div>
-        <div className="reading-table">
+      </Tab>
+      <Tab eventKey="activities" title="Activities">
+        <div className="activities-table">
           <Row className="mt-4">
             <Col className="mt-2">
-              <ReadingTable data={readings} />
+              <ActivityTable data={activities} />
             </Col>
           </Row>
         </div>
-      </Tab>
-      <Tab eventKey="activities" title="Activities">
         <div className="activity-plot">
           <Row className="mt-4">
             <Col className="mt-2">
@@ -51,13 +58,6 @@ export default function Analytics({ state }) {
                   <ActivityPlot data={activities} />
                 </Suspense>
               </ErrorBoundary>
-            </Col>
-          </Row>
-        </div>
-        <div className="activities-table">
-          <Row className="mt-4">
-            <Col className="mt-2">
-              <ActivityTable data={activities} />
             </Col>
           </Row>
         </div>
