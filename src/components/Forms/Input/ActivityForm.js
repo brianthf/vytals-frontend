@@ -1,11 +1,11 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Formik, Field } from "formik";
+import { Button, Col, Container, Row, Form } from "react-bootstrap";
 import { RegisterSchema } from "./validation";
 
 export default function ActivityForm() {
   return (
-    <Formik 
+    <Formik
       initialValues={{
         type: "",
         description: "",
@@ -19,9 +19,9 @@ export default function ActivityForm() {
         actions.setSubmitting(false);
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, handleSubmit }) => (
         <Container fluid style={{ textAlign: "center" }}>
-          <Form>
+          <Form noValidate onSubmit={handleSubmit}>
             <Row className="mt-2">
               <Col>
                 <Field name="type" placeholder="type" type="text" id="type" />

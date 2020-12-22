@@ -1,6 +1,6 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Formik } from "formik";
+import { Button, Container, Form } from "react-bootstrap";
 import { RegisterSchema } from "./validation";
 
 export default function RegisterForm({ register, history }) {
@@ -18,7 +18,7 @@ export default function RegisterForm({ register, history }) {
       validateOnChange={true}
       validationSchema={RegisterSchema}
       onSubmit={(values, actions) => {
-        console.log("ITWORKS");
+        console.log(values);
         register(values)
           .then(() => {
             actions.setSubmitting(false);
@@ -30,94 +30,108 @@ export default function RegisterForm({ register, history }) {
           });
       }}
     >
-      {({ errors, touched }) => (
+      {({
+        errors,
+        touched,
+        values,
+        handleBlur,
+        handleChange,
+        handleSubmit,
+      }) => (
         <Container fluid style={{ textAlign: "center" }}>
-          <Form>
-            <Row className="mt-2">
-              <Col>
-                <Field
+          <Form noValidate onSubmit={handleSubmit}>
+            <Form.Row>
+              <Form.Group controlId="formGroupFirstName">
+                <Form.Control
+                  type="text"
                   name="firstName"
-                  placeholder="first name"
-                  type="text"
-                  id="firstName"
+                  placeholder="First Name"
+                  value={values.firstName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isValid={touched.firstName && !errors.firstName}
                 />
-                {touched.firstName && errors.firstName ? (
-                  <div className="error">{errors.firstName}</div>
-                ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
+              </Form.Group>
+              {touched.firstName && errors.firstName ? (
+                <Form.Control.Feedback type="invalid">
+                  {errors.firstName}
+                </Form.Control.Feedback>
+              ) : null}
+            </Form.Row>
+            <Form.Row>
+              <Form.Group controlId="formGroupLastName">
+                <Form.Control
+                  type="text"
                   name="lastName"
-                  placeholder="last name"
+                  placeholder="Last Name"
+                  value={values.lastName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isValid={touched.lastName && !errors.lastName}
+                />
+              </Form.Group>
+              {touched.lastName && errors.lastName ? (
+                <Form.Control.Feedback type="invalid">
+                  {errors.lastName}
+                </Form.Control.Feedback>
+              ) : null}
+            </Form.Row>
+            <Form.Row>
+              <Form.Group controlId="formGroupUsername">
+                <Form.Control
                   type="text"
-                  id="lastName"
-                />
-                {touched.lastName && errors.lastName ? (
-                  <div className="error">{errors.lastName}</div>
-                ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
                   name="username"
-                  placeholder="username"
-                  type="username"
-                  id="username"
+                  placeholder="Username"
+                  value={values.username}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isValid={touched.username && !errors.username}
                 />
-                {touched.username && errors.username ? (
-                  <div className="error">{errors.username}</div>
-                ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  name="password"
-                  placeholder="password"
-                  type="password"
-                  id="password"
-                />
-                {touched.password && errors.password ? (
-                  <div className="error">{errors.password}</div>
-                ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
+              </Form.Group>
+              {touched.username && errors.username ? (
+                <Form.Control.Feedback type="invalid">
+                  {errors.username}
+                </Form.Control.Feedback>
+              ) : null}
+            </Form.Row>
+            <Form.Row>
+              <Form.Group controlId="formGroupEmail">
+                <Form.Control
+                  type="text"
                   name="email"
-                  placeholder="email"
-                  type="email"
-                  id="email"
+                  placeholder="Email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isValid={touched.email && !errors.email}
                 />
-                {touched.email && errors.email ? (
-                  <div className="error">{errors.email}</div>
-                ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  name="birthDate"
+              </Form.Group>
+              {touched.email && errors.email ? (
+                <Form.Control.Feedback type="invalid">
+                  {errors.email}
+                </Form.Control.Feedback>
+              ) : null}
+            </Form.Row>
+            <Form.Row>
+              <Form.Group controlId="formGroupBirthdate">
+                <Form.Control
                   type="date"
-                  id="birthDate"
-                  min="2019-01-01T00:00"
+                  name="birthDate"
+                  value={values.birthDate}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isValid={touched.birthDate && !errors.birthDate}
                 />
-                {touched.birthDate && errors.birthDate ? (
-                  <div className="error">{errors.birthDate}</div>
-                ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Button type="submit" variant="dark">
-                  Register
-                </Button>
-              </Col>
-            </Row>
+              </Form.Group>
+              {touched.birthDate && errors.birthDate ? (
+                <Form.Control.Feedback type="invalid">
+                  {errors.birthDate}
+                </Form.Control.Feedback>
+              ) : null}
+            </Form.Row>
+            <Button type="submit" variant="dark">
+              Register
+            </Button>
           </Form>
         </Container>
       )}

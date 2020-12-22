@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Tab, Tabs } from "react-bootstrap";
+import { Tab, Tabs } from "react-bootstrap";
 import { ActivityForm, ReadingForm } from "./Input";
 import "./style.css";
 
