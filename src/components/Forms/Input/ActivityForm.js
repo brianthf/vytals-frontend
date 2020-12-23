@@ -1,6 +1,6 @@
 import React from "react";
-import { Formik, Field } from "formik";
-import { Button, Col, Container, Row, Form } from "react-bootstrap";
+import { Formik } from "formik";
+import { Button, Col, Container, Form } from "react-bootstrap";
 import { RegisterSchema } from "./validation";
 
 export default function ActivityForm() {
@@ -19,63 +19,93 @@ export default function ActivityForm() {
         actions.setSubmitting(false);
       }}
     >
-      {({ errors, touched, handleSubmit }) => (
+      {({
+        errors,
+        touched,
+        values,
+        handleBlur,
+        handleChange,
+        handleSubmit,
+      }) => (
         <Container fluid style={{ textAlign: "center" }}>
           <Form noValidate onSubmit={handleSubmit}>
-            <Row className="mt-2">
-              <Col>
-                <Field name="type" placeholder="type" type="text" id="type" />
-                {touched.type && errors.type ? (
-                  <div className="error">{errors.type}</div>
-                ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  id="description"
-                  name="description"
+            {/* first row of inputs */}
+            <Form.Row>
+              <Form.Group as={Col} md="6" controlId="formGroupType">
+                <Form.Label>Type</Form.Label>
+                <Form.Control
                   type="text"
-                  placeholder="description"
+                  name="type"
+                  value={values.type}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.type && !errors.type}
+                  isInvalid={!!errors.type}
+                />
+                {touched.type && errors.type ? (
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.type}
+                  </Form.Control.FeedBack>
+                ) : null}
+              </Form.Group>
+              <Form.Group as={Col} md="6" controlId="formGroupDescription">
+                <Form.Label>Type</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="description"
+                  value={values.description}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.description && !errors.description}
+                  isInvalid={!!errors.description}
                 />
                 {touched.description && errors.description ? (
-                  <div className="error">{errors.description}</div>
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.description}
+                  </Form.Control.FeedBack>
                 ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  id="start time"
-                  name="startTime"
+              </Form.Group>
+            </Form.Row>
+            {/* second and final row of inputs */}
+            <Form.Row>
+              <Form.Group as={Col} md="6" controlId="formGroupStartTime">
+                <Form.Label>Start Time</Form.Label>
+                <Form.Control
                   type="datetime-local"
-                  min="2019-01-01T00:00"
+                  name="startTime"
+                  value={values.startTime}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.startTime && !errors.startTime}
+                  isInvalid={!!errors.startTime}
                 />
                 {touched.startTime && errors.startTime ? (
-                  <div className="error">{errors.startTime}</div>
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.startTime}
+                  </Form.Control.FeedBack>
                 ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  id="password"
-                  name="endTime"
+              </Form.Group>
+              <Form.Group as={Col} md="6" controlId="formGroupEndTime">
+                <Form.Label>End Time</Form.Label>
+                <Form.Control
                   type="datetime-local"
-                  value="2020-01-01T00:00"
+                  name="endTime"
+                  value={values.endTime}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.endTime && !errors.endTime}
+                  isInvalid={!!errors.endTime}
                 />
                 {touched.endTime && errors.endTime ? (
-                  <div className="error">{errors.endTime}</div>
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.endTime}
+                  </Form.Control.FeedBack>
                 ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Button type="submit" variant="dark">
-                  Submit
-                </Button>
-              </Col>
-            </Row>
+              </Form.Group>
+            </Form.Row>
+            <Button type="submit" variant="dark">
+              Submit
+            </Button>
           </Form>
         </Container>
       )}
