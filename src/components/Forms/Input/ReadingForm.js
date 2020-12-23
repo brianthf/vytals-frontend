@@ -1,6 +1,6 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Formik } from "formik";
+import { Button, Col, Container, Form } from "react-bootstrap";
 import { ReadingSchema } from "./validation";
 
 export default function ReadingForm() {
@@ -21,99 +21,130 @@ export default function ReadingForm() {
         actions.setSubmitting(false);
       }}
     >
-      {({ errors, touched }) => (
+      {({
+        errors,
+        touched,
+        values,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+      }) => (
         <Container fluid style={{ textAlign: "center" }}>
-          <Form>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  id="weight"
-                  name="weight"
+          <Form noValidate onSubmit={handleSubmit}>
+            {/* first row of inputs */}
+            <Form.Row>
+              <Form.Group as={Col} md="6" controlId="formGroupWeight">
+                <Form.Label>Weight</Form.Label>
+                <Form.Control
                   type="number"
-                  min="10"
-                  max="10000"
+                  name="weight"
+                  value={values.weight}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.weight && !errors.weight}
+                  isInvalid={!!errors.weight}
                 />
                 {touched.weight && errors.weight ? (
-                  <div className="error">{errors.weight}</div>
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.weight}
+                  </Form.Control.FeedBack>
                 ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  id="bloodPressure"
-                  name="bloodPressure"
+              </Form.Group>
+              <Form.Group as={Col} md="6" controlId="formGroupBloodPressure">
+                <Form.Label>Blood Pressure</Form.Label>
+                <Form.Control
                   type="number"
-                  min="10"
-                  max="10000"
+                  name="bloodPressure"
+                  value={values.bloodPressure}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.bloodPressure && !errors.bloodPressure}
+                  isInvalid={!!errors.bloodPressure}
                 />
                 {touched.bloodPressure && errors.bloodPressure ? (
-                  <div className="error">{errors.bloodPressure}</div>
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.bloodPressure}
+                  </Form.Control.FeedBack>
                 ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  id="temperature"
-                  name="temperature"
+              </Form.Group>
+            </Form.Row>
+            {/* second row of inputs */}
+            <Form.Row>
+              <Form.Group as={Col} md="6" controlId="formGroupTemperature">
+                <Form.Label>Temperature</Form.Label>
+                <Form.Control
                   type="number"
-                  min="10"
-                  max="10000"
+                  name="temperature"
+                  value={values.temperature}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.temperature && !errors.temperature}
+                  isInvalid={!!errors.temperature}
                 />
                 {touched.temperature && errors.temperature ? (
-                  <div className="error">{errors.temperature}</div>
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.temperature}
+                  </Form.Control.FeedBack>
                 ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  id="oxygenLevel"
-                  name="oxygenLevel"
+              </Form.Group>
+              <Form.Group as={Col} md="6" controlId="formGroupOxygenLvl">
+                <Form.Label>Oxygen Level</Form.Label>
+                <Form.Control
                   type="number"
-                  min="10"
-                  max="10000"
+                  name="oxygenLevel"
+                  value={values.oxygenLevel}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.oxygenLevel && !errors.oxygenLevel}
+                  isInvalid={!!errors.oxygenLevel}
                 />
                 {touched.oxygenLevel && errors.oxygenLevel ? (
-                  <div className="error">{errors.oxygenLevel}</div>
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.oxygenLevel}
+                  </Form.Control.FeedBack>
                 ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  id="pulse"
-                  name="pulse"
+              </Form.Group>
+            </Form.Row>
+            {/* third and final row of inputs */}
+            <Form.Row>
+              <Form.Group as={Col} md="6" controlId="formGroupPulse">
+                <Form.Label>Pulse</Form.Label>
+                <Form.Control
                   type="number"
-                  min="10"
-                  max="10000"
+                  name="pulse"
+                  value={values.pulse}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.oxygenLevel && !errors.oxygenLevel}
+                  isInvalid={!!errors.oxygenLevel}
                 />
-                {touched.pulse && errors.pulse ? (
-                  <div className="error">{errors.pulse}</div>
+                {touched.oxygenLevel && errors.oxygenLevel ? (
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.oxygenLevel}
+                  </Form.Control.FeedBack>
                 ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Field
-                  id="timestamp"
-                  name="timestamp"
+              </Form.Group>
+              <Form.Group as={Col} md="6" controlId="formGroupTimestamp">
+                <Form.Label>Timestamp</Form.Label>
+                <Form.Control
                   type="datetime-local"
-                  value="2020-01-01T00:00"
+                  name="timestamp"
+                  value={values.timestamp}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  isValid={touched.timestamp && !errors.timestamp}
+                  isInvalid={!!errors.timestamp}
                 />
                 {touched.timestamp && errors.timestamp ? (
-                  <div className="error">{errors.timestamp}</div>
+                  <Form.Control.FeedBack type="invalid">
+                    {errors.timestamp}
+                  </Form.Control.FeedBack>
                 ) : null}
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col>
-                <Button type="submit" variant="dark">
-                  Submit
-                </Button>
-              </Col>
-            </Row>
+              </Form.Group>
+            </Form.Row>
+            <Button type="submit" variant="dark">
+              Submit
+            </Button>
           </Form>
         </Container>
       )}

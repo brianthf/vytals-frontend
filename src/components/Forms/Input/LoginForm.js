@@ -71,9 +71,9 @@ export default function LoginForm({ login, history }) {
                 ) : null}
               </Form.Group>
             </Form.Row>
-                <Button type="submit" variant="dark">
-                  Login
-                </Button>
+            <Button type="submit" variant="dark">
+              Login
+            </Button>
           </Form>
         </Container>
       )}
