@@ -39,14 +39,14 @@ export const ReadingSchema = yup.object({
 });
 
 export const ActivitySchema = yup.object({
-  type: yup.string().required("Type is required."),
-  description: yup.string().required("Description is required."),
   startTime: yup
     .date()
     .required("Start time is required.")
     .min(new Date(2019, 1, 1)),
   endTime: yup
     .date()
-    .required("Start time is required.")
-    .min(new Date(2019, 1, 1)),
+    .required("End time is required.")
+    .min(new Date(2019, 1, 1), "Endtime must be after 2019."),
+  type: yup.string().required("Type is required."),
+  description: yup.string().required("Description is required."),
 });
