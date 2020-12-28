@@ -25,6 +25,7 @@ export default function ReadingForm() {
         errors,
         touched,
         values,
+        isValid,
         handleChange,
         handleBlur,
         handleSubmit,
@@ -132,7 +133,6 @@ export default function ReadingForm() {
                   value={values.timestamp}
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  isValid={touched.timestamp && !errors.timestamp}
                   isInvalid={!!errors.timestamp}
                 />
                 {touched.timestamp && errors.timestamp ? (

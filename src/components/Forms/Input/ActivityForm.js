@@ -1,111 +1,106 @@
 import React from "react";
-import { Formik } from "formik";
-import { Button, Col, Container, Form } from "react-bootstrap";
-import { RegisterSchema } from "./validation";
+import { Formik, Form, Field } from "formik";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { ActivitySchema } from "./validation";
 
 export default function ActivityForm() {
   return (
     <Formik
       initialValues={{
-        type: "",
-        description: "",
         startTime: "",
         endTime: "",
+        type: "",
+        description: "",
       }}
       validateOnChange={true}
-      validationSchema={RegisterSchema}
+      validationSchema={ActivitySchema}
       onSubmit={(values, actions) => {
         alert(JSON.stringify(values, null, 2));
         actions.setSubmitting(false);
       }}
     >
-      {({
-        errors,
-        touched,
-        values,
-        handleBlur,
-        handleChange,
-        handleSubmit,
-      }) => (
+      {({ errors, touched }) => (
         <Container fluid style={{ textAlign: "center" }}>
-          <Form noValidate onSubmit={handleSubmit}>
-            {/* first row of inputs */}
-            <Form.Row>
-              <Form.Group as={Col} md="6" controlId="formGroupType">
-                <Form.Label>Type</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="type"
-                  value={values.type}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isValid={touched.type && !errors.type}
-                  isInvalid={!!errors.type}
-                />
-                {touched.type && errors.type ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.type}
-                  </Form.Control.FeedBack>
-                ) : null}
-              </Form.Group>
-              <Form.Group as={Col} md="6" controlId="formGroupDescription">
-                <Form.Label>Type</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="description"
-                  value={values.description}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isValid={touched.description && !errors.description}
-                  isInvalid={!!errors.description}
-                />
-                {touched.description && errors.description ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.description}
-                  </Form.Control.FeedBack>
-                ) : null}
-              </Form.Group>
-            </Form.Row>
-            {/* second and final row of inputs */}
-            <Form.Row>
-              <Form.Group as={Col} md="6" controlId="formGroupStartTime">
-                <Form.Label>Start Time</Form.Label>
-                <Form.Control
-                  type="datetime-local"
-                  name="startTime"
-                  value={values.startTime}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isValid={touched.startTime && !errors.startTime}
-                  isInvalid={!!errors.startTime}
-                />
+          <Form>
+            <Row className="mt-2">
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="type">Start Time</label>
+                  <Field
+                    type="datetime-local"
+                    name="startTime"
+                    className={
+                      touched.startTime && errors.startTime
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
                 {touched.startTime && errors.startTime ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.startTime}
-                  </Form.Control.FeedBack>
+                  <div className="error">{errors.startTime}</div>
                 ) : null}
-              </Form.Group>
-              <Form.Group as={Col} md="6" controlId="formGroupEndTime">
-                <Form.Label>End Time</Form.Label>
-                <Form.Control
-                  type="datetime-local"
-                  name="endTime"
-                  value={values.endTime}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isValid={touched.endTime && !errors.endTime}
-                  isInvalid={!!errors.endTime}
-                />
+              </Col>
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="endTime">End Time</label>
+                  <Field
+                    type="datetime-local"
+                    name="endTime"
+                    className={
+                      touched.endTime && errors.endTime
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
                 {touched.endTime && errors.endTime ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.endTime}
-                  </Form.Control.FeedBack>
+                  <div className="error">{errors.endTime}</div>
                 ) : null}
-              </Form.Group>
-            </Form.Row>
-            <Button type="submit" variant="dark">
-              Submit
-            </Button>
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              <Col>
+                <div className="form-group">
+                  <label htmlFor="type">Type</label>
+                  <Field
+                    type="text"
+                    name="type"
+                    className={
+                      touched.type && errors.type
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                  {touched.type && errors.type ? (
+                    <div className="invalid-feedback">{errors.type}</div>
+                  ) : null}
+                </div>
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              <Col>
+                <div className="form-group">
+                  <label htmlFor="type">Description</label>
+                  <Field
+                    name="description"
+                    className="form-control"
+                    as="textarea"
+                    rows={3}
+                    cols={10}
+                  />
+                  {touched.description && errors.description ? (
+                    <div className="invalid-feedback">{errors.description}</div>
+                  ) : null}
+                </div>
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              <Col>
+                <Button type="submit" variant="dark">
+                  Submit
+                </Button>
+              </Col>
+            </Row>
           </Form>
         </Container>
       )}
