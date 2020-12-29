@@ -1,6 +1,6 @@
 import React from "react";
-import { Formik } from "formik";
-import { Button, Col, Container, Form } from "react-bootstrap";
+import { Field, Formik, Form } from "formik";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { ReadingSchema } from "./validation";
 
 export default function ReadingForm() {
@@ -21,127 +21,120 @@ export default function ReadingForm() {
         actions.setSubmitting(false);
       }}
     >
-      {({
-        errors,
-        touched,
-        values,
-        isValid,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-      }) => (
+      {({ errors, touched }) => (
         <Container fluid style={{ textAlign: "center" }}>
-          <Form noValidate onSubmit={handleSubmit}>
+          <Form>
             {/* first row of inputs */}
-            <Form.Row>
-              <Form.Group as={Col} md="6" controlId="formGroupWeight">
-                <Form.Label>Weight</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="weight"
-                  value={values.weight}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isValid={touched.weight && !errors.weight}
-                  isInvalid={!!errors.weight}
-                />
+            <Row className="mt-2">
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="type">Weight</label>
+                  <Field
+                    type="number"
+                    name="weight"
+                    className={
+                      touched.weight && errors.weight
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
                 {touched.weight && errors.weight ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.weight}
-                  </Form.Control.FeedBack>
+                  <div className="error">{errors.weight}</div>
                 ) : null}
-              </Form.Group>
-              <Form.Group as={Col} md="6" controlId="formGroupBloodPressure">
-                <Form.Label>Blood Pressure</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="bloodPressure"
-                  value={values.bloodPressure}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isValid={touched.bloodPressure && !errors.bloodPressure}
-                  isInvalid={!!errors.bloodPressure}
-                />
+              </Col>
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="type">Blood Pressure</label>
+                  <Field
+                    type="number"
+                    name="bloodPressure"
+                    className={
+                      touched.bloodPressure && errors.bloodPressure
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
                 {touched.bloodPressure && errors.bloodPressure ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.bloodPressure}
-                  </Form.Control.FeedBack>
+                  <div className="error">{errors.bloodPressure}</div>
                 ) : null}
-              </Form.Group>
-            </Form.Row>
+              </Col>
+            </Row>
             {/* second row of inputs */}
-            <Form.Row>
-              <Form.Group as={Col} md="6" controlId="formGroupTemperature">
-                <Form.Label>Temperature</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="temperature"
-                  value={values.temperature}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isValid={touched.temperature && !errors.temperature}
-                  isInvalid={!!errors.temperature}
-                />
+            <Row className="mt-2">
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="type">Temperature</label>
+                  <Field
+                    type="number"
+                    name="temperature"
+                    className={
+                      touched.temperature && errors.temperature
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
                 {touched.temperature && errors.temperature ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.temperature}
-                  </Form.Control.FeedBack>
+                  <div className="error">{errors.temperature}</div>
                 ) : null}
-              </Form.Group>
-              <Form.Group as={Col} md="6" controlId="formGroupOxygenLvl">
-                <Form.Label>Oxygen Level</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="oxygenLevel"
-                  value={values.oxygenLevel}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isValid={touched.oxygenLevel && !errors.oxygenLevel}
-                  isInvalid={!!errors.oxygenLevel}
-                />
+              </Col>
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="type">Oxygen Level</label>
+                  <Field
+                    type="number"
+                    name="oxygenLevel"
+                    className={
+                      touched.oxygenLevel && errors.oxygenLevel
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
                 {touched.oxygenLevel && errors.oxygenLevel ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.oxygenLevel}
-                  </Form.Control.FeedBack>
+                  <div className="error">{errors.oxygenLevel}</div>
                 ) : null}
-              </Form.Group>
-            </Form.Row>
+              </Col>
+            </Row>
             {/* third and final row of inputs */}
-            <Form.Row>
-              <Form.Group as={Col} md="6" controlId="formGroupPulse">
-                <Form.Label>Pulse</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="pulse"
-                  value={values.pulse}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isValid={touched.oxygenLevel && !errors.oxygenLevel}
-                  isInvalid={!!errors.oxygenLevel}
-                />
-                {touched.oxygenLevel && errors.oxygenLevel ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.oxygenLevel}
-                  </Form.Control.FeedBack>
+            <Row className="mt-2">
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="type">Pulse</label>
+                  <Field
+                    type="number"
+                    name="pulse"
+                    className={
+                      touched.pulse && errors.pulse
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
+                {touched.pulse && errors.pulse ? (
+                  <div className="error">{errors.pulse}</div>
                 ) : null}
-              </Form.Group>
-              <Form.Group as={Col} md="6" controlId="formGroupTimestamp">
-                <Form.Label>Timestamp</Form.Label>
-                <Form.Control
-                  type="datetime-local"
-                  name="timestamp"
-                  value={values.timestamp}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  isInvalid={!!errors.timestamp}
-                />
+              </Col>
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="type">Timestamp</label>
+                  <Field
+                    type="datetime-local"
+                    name="timestamp"
+                    className={
+                      touched.timestamp && errors.timestamp
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
                 {touched.timestamp && errors.timestamp ? (
-                  <Form.Control.FeedBack type="invalid">
-                    {errors.timestamp}
-                  </Form.Control.FeedBack>
+                  <div className="error">{errors.timestamp}</div>
                 ) : null}
-              </Form.Group>
-            </Form.Row>
+              </Col>
+            </Row>
             <Button type="submit" variant="dark">
               Submit
             </Button>
