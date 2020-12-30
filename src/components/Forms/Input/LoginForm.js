@@ -1,6 +1,6 @@
 import React from "react";
-import { Formik } from "formik";
-import { Button, Container, Form } from "react-bootstrap";
+import { Formik, Form, Field } from "formik";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { LoginSchema } from "./validation";
 
 export default function LoginForm({ login, history }) {
@@ -23,54 +23,47 @@ export default function LoginForm({ login, history }) {
           });
       }}
     >
-      {({
-        errors,
-        touched,
-        values,
-        handleSubmit,
-        handleChange,
-        handleBlur,
-      }) => (
+      {({ errors, touched }) => (
         <Container fluid style={{ textAlign: "center" }}>
-          <Form noValidate onSubmit={handleSubmit}>
-            <Form.Row>
-              <Form.Group controlId="formGroupUsername">
-                <Form.Control
-                  type="text"
-                  name="username"
-                  value={values.username}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="username"
-                  isValid={touched.username && !errors.username}
-                  isInvalid={!!errors.username}
-                />
+          <Form>
+            <Row className="mt-2">
+              <Col>
+                <div className="form-group">
+                  <label htmlFor="type">Weight</label>
+                  <Field
+                    type="text"
+                    name="username"
+                    className={
+                      touched.username && errors.username
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
                 {touched.username && errors.username ? (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.username}
-                  </Form.Control.Feedback>
+                  <div className="error">{errors.username}</div>
                 ) : null}
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group controlId="formGroupPassword">
-                <Form.Control
-                  type="password"
-                  name="password"
-                  value={values.password}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  placeholder="password"
-                  isValid={touched.password && !errors.password}
-                  isInvalid={!!errors.password}
-                />
+              </Col>
+            </Row>
+            <Row className="mt-2">
+              <Col>
+                <div className="form-group">
+                  <label htmlFor="type">Blood Pressure</label>
+                  <Field
+                    type="password"
+                    name="password"
+                    className={
+                      touched.password && errors.password
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
                 {touched.password && errors.password ? (
-                  <Form.Control.Feedback type="invalid">
-                    {errors.password}
-                  </Form.Control.Feedback>
+                  <div className="error">{errors.password}</div>
                 ) : null}
-              </Form.Group>
-            </Form.Row>
+              </Col>
+            </Row>
             <Button type="submit" variant="dark">
               Login
             </Button>
