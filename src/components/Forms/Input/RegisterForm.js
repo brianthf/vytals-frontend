@@ -1,10 +1,9 @@
 import React from "react";
-import { Formik } from "formik";
-import { Button, Container, Form } from "react-bootstrap";
+import { Formik, Form, Field } from "formik";
+import { Button, Container, Col, Row } from "react-bootstrap";
 import { RegisterSchema } from "./validation";
 
 export default function RegisterForm({ register, history }) {
-  console.log("REERE");
   return (
     <Formik
       initialValues={{
@@ -15,10 +14,8 @@ export default function RegisterForm({ register, history }) {
         email: "",
         birthDate: "",
       }}
-      validateOnChange={true}
       validationSchema={RegisterSchema}
       onSubmit={(values, actions) => {
-        console.log(values);
         register(values)
           .then(() => {
             actions.setSubmitting(false);
@@ -30,105 +27,117 @@ export default function RegisterForm({ register, history }) {
           });
       }}
     >
-      {({
-        errors,
-        touched,
-        values,
-        handleBlur,
-        handleChange,
-        handleSubmit,
-      }) => (
+      {({ errors, touched }) => (
         <Container fluid style={{ textAlign: "center" }}>
-          <Form noValidate onSubmit={handleSubmit}>
-            <Form.Row>
-              <Form.Group controlId="formGroupFirstName">
-                <Form.Control
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name"
-                  value={values.firstName}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  isValid={touched.firstName && !errors.firstName}
-                />
-              </Form.Group>
-              {touched.firstName && errors.firstName ? (
-                <Form.Control.Feedback type="invalid">
-                  {errors.firstName}
-                </Form.Control.Feedback>
-              ) : null}
-            </Form.Row>
-            <Form.Row>
-              <Form.Group controlId="formGroupLastName">
-                <Form.Control
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  value={values.lastName}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  isValid={touched.lastName && !errors.lastName}
-                />
-              </Form.Group>
-              {touched.lastName && errors.lastName ? (
-                <Form.Control.Feedback type="invalid">
-                  {errors.lastName}
-                </Form.Control.Feedback>
-              ) : null}
-            </Form.Row>
-            <Form.Row>
-              <Form.Group controlId="formGroupUsername">
-                <Form.Control
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                  value={values.username}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  isValid={touched.username && !errors.username}
-                />
-              </Form.Group>
-              {touched.username && errors.username ? (
-                <Form.Control.Feedback type="invalid">
-                  {errors.username}
-                </Form.Control.Feedback>
-              ) : null}
-            </Form.Row>
-            <Form.Row>
-              <Form.Group controlId="formGroupEmail">
-                <Form.Control
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  isValid={touched.email && !errors.email}
-                />
-              </Form.Group>
-              {touched.email && errors.email ? (
-                <Form.Control.Feedback type="invalid">
-                  {errors.email}
-                </Form.Control.Feedback>
-              ) : null}
-            </Form.Row>
-            <Form.Row>
-              <Form.Group controlId="formGroupBirthdate">
-                <Form.Control
-                  type="date"
-                  name="birthDate"
-                  value={values.birthDate}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  isValid={touched.birthDate && !errors.birthDate}
-                />
-              </Form.Group>
-              {touched.birthDate && errors.birthDate ? (
-                <Form.Control.Feedback type="invalid">
-                  {errors.birthDate}
-                </Form.Control.Feedback>
-              ) : null}
-            </Form.Row>
+          <Form>
+            <Row className="mt-2">
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="firstName">First Name</label>
+                  <Field
+                    type="text"
+                    name="firstName"
+                    className={
+                      touched.firstName && errors.firstName
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
+                {touched.firstName && errors.firstName ? (
+                  <div className="invalid-feedback">{errors.firstName}</div>
+                ) : null}
+              </Col>
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="lastName">Last Name</label>
+                  <Field
+                    type="text"
+                    name="lastName"
+                    className={
+                      touched.lastName && errors.lastName
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
+                {touched.lastName && errors.lastName ? (
+                  <div className="invalid-feedback">{errors.lastName}</div>
+                ) : null}
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="username">Username</label>
+                  <Field
+                    type="text"
+                    name="username"
+                    className={
+                      touched.username && errors.username
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
+                {touched.username && errors.username ? (
+                  <div className="invalid-feedback">{errors.username}</div>
+                ) : null}
+              </Col>
+              <Col>
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <Field
+                    type="password"
+                    name="password"
+                    className={
+                      touched.password && errors.password
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
+                {touched.password && errors.password ? (
+                  <div className="invalid-feedback">{errors.password}</div>
+                ) : null}
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <Field
+                    type="text"
+                    name="email"
+                    className={
+                      touched.email && errors.email
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
+                {touched.email && errors.email ? (
+                  <div className="invalid-feedback">{errors.email}</div>
+                ) : null}
+              </Col>
+              <Col md={6}>
+                <div className="form-group">
+                  <label htmlFor="birthDate">Birthdate</label>
+                  <Field
+                    type="date"
+                    name="birthDate"
+                    className={
+                      touched.birthDate && errors.birthDate
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                  />
+                </div>
+                {touched.birthDate && errors.birthDate ? (
+                  <div className="invalid-feedback">{errors.birthDate}</div>
+                ) : null}
+              </Col>
+            </Row>
             <Button type="submit" variant="dark">
               Register
             </Button>

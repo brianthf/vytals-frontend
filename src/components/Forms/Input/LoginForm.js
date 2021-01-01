@@ -29,7 +29,7 @@ export default function LoginForm({ login, history }) {
             <Row className="mt-2">
               <Col>
                 <div className="form-group">
-                  <label htmlFor="type">Weight</label>
+                  <label htmlFor="type">Username</label>
                   <Field
                     type="text"
                     name="username"
@@ -48,7 +48,7 @@ export default function LoginForm({ login, history }) {
             <Row className="mt-2">
               <Col>
                 <div className="form-group">
-                  <label htmlFor="type">Blood Pressure</label>
+                  <label htmlFor="type">Password</label>
                   <Field
                     type="password"
                     name="password"

@@ -14,7 +14,6 @@ export default function ReadingForm() {
         pulse: 0,
         timestamp: "",
       }}
-      validateOnChange={true}
       validationSchema={ReadingSchema}
       onSubmit={(values, actions) => {
         alert(JSON.stringify(values, null, 2));
@@ -40,7 +39,7 @@ export default function ReadingForm() {
                   />
                 </div>
                 {touched.weight && errors.weight ? (
-                  <div className="error">{errors.weight}</div>
+                  <div className="invalid-feedback">{errors.weight}</div>
                 ) : null}
               </Col>
               <Col md={6}>
@@ -57,7 +56,7 @@ export default function ReadingForm() {
                   />
                 </div>
                 {touched.bloodPressure && errors.bloodPressure ? (
-                  <div className="error">{errors.bloodPressure}</div>
+                  <div className="invalid-feedback">{errors.bloodPressure}</div>
                 ) : null}
               </Col>
             </Row>
@@ -77,7 +76,7 @@ export default function ReadingForm() {
                   />
                 </div>
                 {touched.temperature && errors.temperature ? (
-                  <div className="error">{errors.temperature}</div>
+                  <div className="invalid-feedback">{errors.temperature}</div>
                 ) : null}
               </Col>
               <Col md={6}>
@@ -94,7 +93,7 @@ export default function ReadingForm() {
                   />
                 </div>
                 {touched.oxygenLevel && errors.oxygenLevel ? (
-                  <div className="error">{errors.oxygenLevel}</div>
+                  <div className="invalid-feedback">{errors.oxygenLevel}</div>
                 ) : null}
               </Col>
             </Row>
@@ -114,7 +113,7 @@ export default function ReadingForm() {
                   />
                 </div>
                 {touched.pulse && errors.pulse ? (
-                  <div className="error">{errors.pulse}</div>
+                  <div className="invalid-feedback">{errors.pulse}</div>
                 ) : null}
               </Col>
               <Col md={6}>
@@ -131,7 +130,7 @@ export default function ReadingForm() {
                   />
                 </div>
                 {touched.timestamp && errors.timestamp ? (
-                  <div className="error">{errors.timestamp}</div>
+                  <div className="invalid-feedback">{errors.timestamp}</div>
                 ) : null}
               </Col>
             </Row>
