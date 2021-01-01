@@ -27,7 +27,7 @@ export default function ReadingForm() {
             <Row className="mt-2">
               <Col md={6}>
                 <div className="form-group">
-                  <label htmlFor="type">Weight</label>
+                  <label htmlFor="weight">Weight</label>
                   <Field
                     type="number"
                     name="weight"
@@ -64,7 +64,7 @@ export default function ReadingForm() {
             <Row className="mt-2">
               <Col md={6}>
                 <div className="form-group">
-                  <label htmlFor="type">Temperature</label>
+                  <label htmlFor="temperature">Temperature</label>
                   <Field
                     type="number"
                     name="temperature"
@@ -81,7 +81,7 @@ export default function ReadingForm() {
               </Col>
               <Col md={6}>
                 <div className="form-group">
-                  <label htmlFor="type">Oxygen Level</label>
+                  <label htmlFor="oxygenLevel">Oxygen Level</label>
                   <Field
                     type="number"
                     name="oxygenLevel"
@@ -101,7 +101,7 @@ export default function ReadingForm() {
             <Row className="mt-2">
               <Col md={6}>
                 <div className="form-group">
-                  <label htmlFor="type">Pulse</label>
+                  <label htmlFor="pulse">Pulse</label>
                   <Field
                     type="number"
                     name="pulse"
@@ -118,7 +118,7 @@ export default function ReadingForm() {
               </Col>
               <Col md={6}>
                 <div className="form-group">
-                  <label htmlFor="type">Timestamp</label>
+                  <label htmlFor="timestamp">Timestamp</label>
                   <Field
                     type="datetime-local"
                     name="timestamp"
