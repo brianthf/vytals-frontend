@@ -12,7 +12,6 @@ export default function ActivityForm() {
         type: "",
         description: "",
       }}
-      validateOnChange={true}
       validationSchema={ActivitySchema}
       onSubmit={(values, actions) => {
         alert(JSON.stringify(values, null, 2));
@@ -37,7 +36,7 @@ export default function ActivityForm() {
                   />
                 </div>
                 {touched.startTime && errors.startTime ? (
-                  <div className="error">{errors.startTime}</div>
+                  <div className="invalid-feedback">{errors.startTime}</div>
                 ) : null}
               </Col>
               <Col md={6}>
@@ -54,7 +53,7 @@ export default function ActivityForm() {
                   />
                 </div>
                 {touched.endTime && errors.endTime ? (
-                  <div className="error">{errors.endTime}</div>
+                  <div className="invalid-feedback">{errors.endTime}</div>
                 ) : null}
               </Col>
             </Row>

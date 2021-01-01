@@ -8,7 +8,7 @@ import "./style.css";
 export default function Home() {
   const history = useHistory();
   const { login, register } = useAuth();
-  const [isRegistered, setRegistered] = React.useState(false);
+  const [isRegistered, ] = React.useState(true);
 
   return (
     <div className="home">
