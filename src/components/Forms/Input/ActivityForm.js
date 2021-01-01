@@ -24,7 +24,7 @@ export default function ActivityForm() {
             <Row className="mt-2">
               <Col md={6}>
                 <div className="form-group">
-                  <label htmlFor="type">Start Time</label>
+                  <label htmlFor="startTime">Start Time</label>
                   <Field
                     type="datetime-local"
                     name="startTime"
@@ -79,7 +79,7 @@ export default function ActivityForm() {
             <Row className="mt-2">
               <Col>
                 <div className="form-group">
-                  <label htmlFor="type">Description</label>
+                  <label htmlFor="description">Description</label>
                   <Field
                     name="description"
                     className="form-control"
@@ -93,13 +93,9 @@ export default function ActivityForm() {
                 </div>
               </Col>
             </Row>
-            <Row className="mt-2">
-              <Col>
-                <Button type="submit" variant="dark">
-                  Submit
-                </Button>
-              </Col>
-            </Row>
+            <Button type="submit" variant="dark">
+              Submit
+            </Button>
           </Form>
         </Container>
       )}
