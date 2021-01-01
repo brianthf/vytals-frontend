@@ -34,10 +34,10 @@ export default function ActivityForm() {
                         : "form-control"
                     }
                   />
+                  {touched.startTime && errors.startTime ? (
+                    <div className="invalid-feedback">{errors.startTime}</div>
+                  ) : null}
                 </div>
-                {touched.startTime && errors.startTime ? (
-                  <div className="invalid-feedback">{errors.startTime}</div>
-                ) : null}
               </Col>
               <Col md={6}>
                 <div className="form-group">
@@ -51,10 +51,10 @@ export default function ActivityForm() {
                         : "form-control"
                     }
                   />
+                  {touched.endTime && errors.endTime ? (
+                    <div className="invalid-feedback">{errors.endTime}</div>
+                  ) : null}
                 </div>
-                {touched.endTime && errors.endTime ? (
-                  <div className="invalid-feedback">{errors.endTime}</div>
-                ) : null}
               </Col>
             </Row>
             <Row className="mt-2">

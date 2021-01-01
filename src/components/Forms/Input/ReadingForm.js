@@ -37,10 +37,10 @@ export default function ReadingForm() {
                         : "form-control"
                     }
                   />
+                  {touched.weight && errors.weight ? (
+                    <div className="invalid-feedback">{errors.weight}</div>
+                  ) : null}
                 </div>
-                {touched.weight && errors.weight ? (
-                  <div className="invalid-feedback">{errors.weight}</div>
-                ) : null}
               </Col>
               <Col md={6}>
                 <div className="form-group">
@@ -54,10 +54,12 @@ export default function ReadingForm() {
                         : "form-control"
                     }
                   />
+                  {touched.bloodPressure && errors.bloodPressure ? (
+                    <div className="invalid-feedback">
+                      {errors.bloodPressure}
+                    </div>
+                  ) : null}
                 </div>
-                {touched.bloodPressure && errors.bloodPressure ? (
-                  <div className="invalid-feedback">{errors.bloodPressure}</div>
-                ) : null}
               </Col>
             </Row>
             {/* second row of inputs */}
@@ -74,10 +76,10 @@ export default function ReadingForm() {
                         : "form-control"
                     }
                   />
+                  {touched.temperature && errors.temperature ? (
+                    <div className="invalid-feedback">{errors.temperature}</div>
+                  ) : null}
                 </div>
-                {touched.temperature && errors.temperature ? (
-                  <div className="invalid-feedback">{errors.temperature}</div>
-                ) : null}
               </Col>
               <Col md={6}>
                 <div className="form-group">
@@ -91,10 +93,10 @@ export default function ReadingForm() {
                         : "form-control"
                     }
                   />
+                  {touched.oxygenLevel && errors.oxygenLevel ? (
+                    <div className="invalid-feedback">{errors.oxygenLevel}</div>
+                  ) : null}
                 </div>
-                {touched.oxygenLevel && errors.oxygenLevel ? (
-                  <div className="invalid-feedback">{errors.oxygenLevel}</div>
-                ) : null}
               </Col>
             </Row>
             {/* third and final row of inputs */}
@@ -111,10 +113,10 @@ export default function ReadingForm() {
                         : "form-control"
                     }
                   />
+                  {touched.pulse && errors.pulse ? (
+                    <div className="invalid-feedback">{errors.pulse}</div>
+                  ) : null}
                 </div>
-                {touched.pulse && errors.pulse ? (
-                  <div className="invalid-feedback">{errors.pulse}</div>
-                ) : null}
               </Col>
               <Col md={6}>
                 <div className="form-group">
@@ -128,10 +130,10 @@ export default function ReadingForm() {
                         : "form-control"
                     }
                   />
+                  {touched.timestamp && errors.timestamp ? (
+                    <div className="invalid-feedback">{errors.timestamp}</div>
+                  ) : null}
                 </div>
-                {touched.timestamp && errors.timestamp ? (
-                  <div className="invalid-feedback">{errors.timestamp}</div>
-                ) : null}
               </Col>
             </Row>
             <Button type="submit" variant="dark">
