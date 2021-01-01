@@ -43,10 +43,10 @@ export default function RegisterForm({ register, history }) {
                         : "form-control"
                     }
                   />
+                  {touched.firstName && errors.firstName ? (
+                    <div className="invalid-feedback">{errors.firstName}</div>
+                  ) : null}
                 </div>
-                {touched.firstName && errors.firstName ? (
-                  <div className="invalid-feedback">{errors.firstName}</div>
-                ) : null}
               </Col>
               <Col md={6}>
                 <div className="form-group">
@@ -60,10 +60,10 @@ export default function RegisterForm({ register, history }) {
                         : "form-control"
                     }
                   />
+                  {touched.lastName && errors.lastName ? (
+                    <div className="invalid-feedback">{errors.lastName}</div>
+                  ) : null}
                 </div>
-                {touched.lastName && errors.lastName ? (
-                  <div className="invalid-feedback">{errors.lastName}</div>
-                ) : null}
               </Col>
             </Row>
             <Row>
@@ -79,10 +79,10 @@ export default function RegisterForm({ register, history }) {
                         : "form-control"
                     }
                   />
+                  {touched.username && errors.username ? (
+                    <div className="invalid-feedback">{errors.username}</div>
+                  ) : null}
                 </div>
-                {touched.username && errors.username ? (
-                  <div className="invalid-feedback">{errors.username}</div>
-                ) : null}
               </Col>
               <Col>
                 <div className="form-group">
@@ -96,10 +96,10 @@ export default function RegisterForm({ register, history }) {
                         : "form-control"
                     }
                   />
+                  {touched.password && errors.password ? (
+                    <div className="invalid-feedback">{errors.password}</div>
+                  ) : null}
                 </div>
-                {touched.password && errors.password ? (
-                  <div className="invalid-feedback">{errors.password}</div>
-                ) : null}
               </Col>
             </Row>
             <Row>
@@ -115,10 +115,10 @@ export default function RegisterForm({ register, history }) {
                         : "form-control"
                     }
                   />
+                  {touched.email && errors.email ? (
+                    <div className="invalid-feedback">{errors.email}</div>
+                  ) : null}
                 </div>
-                {touched.email && errors.email ? (
-                  <div className="invalid-feedback">{errors.email}</div>
-                ) : null}
               </Col>
               <Col md={6}>
                 <div className="form-group">
@@ -132,10 +132,10 @@ export default function RegisterForm({ register, history }) {
                         : "form-control"
                     }
                   />
+                  {touched.birthDate && errors.birthDate ? (
+                    <div className="invalid-feedback">{errors.birthDate}</div>
+                  ) : null}
                 </div>
-                {touched.birthDate && errors.birthDate ? (
-                  <div className="invalid-feedback">{errors.birthDate}</div>
-                ) : null}
               </Col>
             </Row>
             <Button type="submit" variant="dark">
