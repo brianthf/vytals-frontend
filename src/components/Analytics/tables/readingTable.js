@@ -18,7 +18,6 @@ const ReadingTable = React.memo(({ data }) => {
       <tbody>
         {data.map((reading, index) => (
           <tr key={index}>
-            <td>{index}</td>
             <td>{reading.weight}</td>
             <td>{reading.bloodPressure}</td>
             <td>{reading.temperature}</td>
@@ -31,6 +30,5 @@ const ReadingTable = React.memo(({ data }) => {
     </Table>
   );
 });
-
 
 export default ReadingTable;
