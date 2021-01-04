@@ -16,7 +16,6 @@ const ActivityTable = React.memo(({ data }) => {
       <tbody>
         {data.map((activity, index) => (
           <tr key={index}>
-            <td>{index}</td>
             <td>{activity.type}</td>
             <td>{activity.description}</td>
             <td>{activity.startTime}</td>
