@@ -6,7 +6,6 @@ const ReadingTable = React.memo(({ data }) => {
     <Table striped bordered hover variant="dark" responsive>
       <thead>
         <tr>
-          <th>Index</th>
           <th>Weight</th>
           <th>Blood Pressure</th>
           <th>Temperature</th>
@@ -23,7 +22,7 @@ const ReadingTable = React.memo(({ data }) => {
             <td>{reading.temperature}</td>
             <td>{reading.oxygenLevel}</td>
             <td>{reading.pulse}</td>
-            <td>{reading.timestamp}</td>
+            <td>{new Date(reading.timestamp).toString()}</td>
           </tr>
         ))}
       </tbody>
