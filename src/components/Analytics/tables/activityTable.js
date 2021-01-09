@@ -6,7 +6,6 @@ const ActivityTable = React.memo(({ data }) => {
     <Table striped bordered hover variant="dark" responsive>
       <thead>
         <tr>
-          <th>Index</th>
           <th>Type</th>
           <th>Description</th>
           <th>Start Time</th>
@@ -19,7 +18,7 @@ const ActivityTable = React.memo(({ data }) => {
             <td>{activity.type}</td>
             <td>{activity.description}</td>
             <td>{activity.startTime}</td>
-            <td>{activity.endTime}</td>
+            <td>{new Date(activity.endTime).toString()}</td>
           </tr>
         ))}
       </tbody>
